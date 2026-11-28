@@ -1,0 +1,60 @@
+name: Publish Android APK release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag da versão a compilar e publicar (ex.: v1.0.0)'
+        required: true
+        type: string
+      release_name:
+        description: 'Nome exibido no GitHub Release'
+        required: true
+        default: 'S20 OS Android'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da versão solicitada
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag_name }}
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+
+      - name: Configurar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar componentes Android SDK
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;28.2.13676358' 'cmake;3.22.1'
+
+      - name: Compilar APK de debug
+        run: gradle --no-daemon assembleDebug
+
+      - name: Preparar nome estável do APK
+        run: cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/s20-os.apk
+
+      - name: Criar release e anexar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag_name }}
+          name: ${{ inputs.release_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: app/build/outputs/apk/debug/s20-os.apk

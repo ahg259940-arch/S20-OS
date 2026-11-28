@@ -5,11 +5,25 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      run_instrumented_tests:
+        description: 'Criar um emulador Android e executar os testes instrumentados'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -17,39 +31,34 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
-      - name: Localizar sdkmanager
-        shell: bash
-        run: |
-          sdkmanager_path=""
-          searched_paths=""
-          for sdk_root in "${ANDROID_HOME:-}" "${ANDROID_SDK_ROOT:-}"; do
-            if [ -z "$sdk_root" ]; then
-              continue
-            fi
-
-            cmdline_tools_path="$sdk_root/cmdline-tools"
-            searched_paths="${searched_paths}${searched_paths:+, }$cmdline_tools_path"
-            if [ -d "$cmdline_tools_path" ]; then
-              sdkmanager_path="$(find "$cmdline_tools_path" -type f -name sdkmanager -executable -print -quit)"
-              if [ -n "$sdkmanager_path" ]; then
-                break
-              fi
-            fi
-          done
-
-          if [ -z "$sdkmanager_path" ]; then
-            echo "Erro: sdkmanager não encontrado. Caminhos do SDK pesquisados: ${searched_paths:-ANDROID_HOME/cmdline-tools e ANDROID_SDK_ROOT/cmdline-tools (variáveis não definidas)}" >&2
-            exit 1
-          fi
-
-          echo "${sdkmanager_path%/*}" >> "$GITHUB_PATH"
+      - uses: android-actions/setup-android@v3
       - name: Instalar Android SDK 35
         run: |
           yes | sdkmanager --licenses
-          sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
+          sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;28.2.13676358' 'cmake;3.22.1'
+      - name: Resolver dependências Gradle
+        run: gradle --no-daemon :app:dependencies
+      - name: Testar módulos integrados do N.E.X.U.S.
+        run: node --test tests/nexus-runtime.integration.test.js
       - name: Compilar APK de debug
         run: gradle --no-daemon assembleDebug
-      - uses: actions/upload-artifact@v4
+      - name: Gerar SHA256 do APK
+        shell: bash
+        run: sha256sum app/build/outputs/apk/debug/app-debug.apk | tee app/build/outputs/apk/debug/app-debug.apk.sha256
+      - name: Publicar APK debug como artifact
+        uses: actions/upload-artifact@v4
         with:
           name: s20-os-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/app-debug.apk.sha256
+          if-no-files-found: error
+      - name: Testar runtime no emulador Android
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_instrumented_tests }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: gradle --no-daemon connectedDebugAndroidTest

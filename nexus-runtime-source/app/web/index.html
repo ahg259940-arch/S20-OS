@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Interface local do núcleo cognitivo N.E.X.U.S.">
+  <title>N.E.X.U.S. — Núcleo</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/nexus.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css?v=3.1">
+  <script src="/backup-crypto.js?v=3.0" defer></script>
+  <script src="/layout-geometry.js?v=3.0" defer></script>
+  <script src="/presentation.js?v=3.0" defer></script>
+  <script src="/app.js?v=3.1" defer></script>
+</head>
+<body>
+  <svg class="sr-only" aria-hidden="true">
+    <defs>
+      <linearGradient id="nexusMultiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe"/>
+        <stop offset="28%" stop-color="#3b82f6"/>
+        <stop offset="56%" stop-color="#8b5cf6"/>
+        <stop offset="82%" stop-color="#ff007f"/>
+        <stop offset="100%" stop-color="#ffb8dc"/>
+      </linearGradient>
+      <linearGradient id="nexusCyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#7df9ff"/>
+        <stop offset="50%" stop-color="#00f2fe"/>
+        <stop offset="100%" stop-color="#0066ff"/>
+      </linearGradient>
+      <linearGradient id="nexusMagentaPink" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ff007f"/>
+        <stop offset="60%" stop-color="#ff2d87"/>
+        <stop offset="100%" stop-color="#ffb8dc"/>
+      </linearGradient>
+      <linearGradient id="nexusVioletIndigo" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#c084fc"/>
+        <stop offset="100%" stop-color="#4f46e5"/>
+      </linearGradient>
+      <radialGradient id="nexusAuraCyan" cx="35%" cy="35%" r="60%">
+        <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.55"/>
+        <stop offset="50%" stop-color="#0066ff" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#0066ff" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="nexusAuraMagenta" cx="68%" cy="68%" r="60%">
+        <stop offset="0%" stop-color="#ff007f" stop-opacity="0.5"/>
+        <stop offset="50%" stop-color="#a855f7" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="nexusAuraCenter" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+        <stop offset="25%" stop-color="#7df9ff" stop-opacity="0.8"/>
+        <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+        <stop offset="75%" stop-color="#ff007f" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="nexusGlow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="5" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="nexusHighGlow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="14" result="b2"/>
+        <feMerge><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="nexusSparkGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="3" result="b3"/>
+        <feMerge><feMergeNode in="b3"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+  <div class="boot-screen" id="boot-screen" aria-label="Inicializando N.E.X.U.S." role="status">
+    <div class="boot-core-stage">
+      <div class="nexus-core-visual boot-core" aria-hidden="true">
+        <svg viewBox="0 0 500 500" class="nexus-core-svg" role="img" aria-label="Núcleo cognitivo N.E.X.U.S. em inicialização">
+          <g class="core-aura-layer">
+            <ellipse cx="200" cy="210" rx="170" ry="150" fill="url(#nexusAuraCyan)" filter="url(#nexusHighGlow)"/>
+            <ellipse cx="300" cy="290" rx="160" ry="145" fill="url(#nexusAuraMagenta)" filter="url(#nexusHighGlow)"/>
+            <circle cx="250" cy="250" r="110" fill="url(#nexusAuraCenter)" opacity="0.6" filter="url(#nexusGlow)"/>
+          </g>
+          <g class="core-flux-layer">
+            <path class="flux-arc-alpha" d="M 120,110 A 190,170 -15 0,0 155,405 L 172,390 A 165,150 -15 0,1 138,125 Z" fill="url(#nexusCyanBlue)" opacity="0.65" filter="url(#nexusGlow)"/>
+            <path class="flux-arc-beta" d="M 380,390 A 185,165 20 0,0 350,95 L 334,112 A 160,145 20 0,1 362,372 Z" fill="url(#nexusMagentaPink)" opacity="0.62" filter="url(#nexusGlow)"/>
+            <circle cx="250" cy="250" r="226" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="1.3" stroke-dasharray="16 12 36 8 8 16 64 14" opacity="0.5" class="telemetry-ring"/>
+            <line x1="120" y1="110" x2="105" y2="95" stroke="#7df9ff" stroke-width="2" opacity="0.8"/>
+            <line x1="380" y1="390" x2="396" y2="406" stroke="#ff70c5" stroke-width="2" opacity="0.8"/>
+            <circle cx="105" cy="95" r="3" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            <circle cx="396" cy="406" r="3.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+          </g>
+          <g class="core-orbit-alpha-group">
+            <ellipse cx="250" cy="250" rx="205" ry="92" fill="none" stroke="url(#nexusCyanBlue)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+            <circle cx="455" cy="250" r="5" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            <circle cx="45" cy="250" r="3.5" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+          </g>
+          <g class="core-orbit-beta-group">
+            <ellipse cx="250" cy="250" rx="185" ry="82" fill="none" stroke="url(#nexusMagentaPink)" stroke-width="2" opacity="0.75" filter="url(#nexusGlow)"/>
+            <circle cx="250" cy="332" r="4.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            <circle cx="250" cy="168" r="3" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+          </g>
+          <g class="core-crystal-group">
+            <polygon points="250,85 365,158 392,288 278,412 132,352 114,192" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+            <polygon points="250,85 365,158 296,264 204,236" fill="rgba(0,242,254,0.13)" stroke="#00f2fe" stroke-width="1.4"/>
+            <polygon points="365,158 392,288 296,264" fill="rgba(168,85,247,0.16)" stroke="#c084fc" stroke-width="1.5"/>
+            <polygon points="392,288 278,412 296,264" fill="rgba(255,0,127,0.18)" stroke="#ff007f" stroke-width="1.6"/>
+            <polygon points="278,412 132,352 204,236 296,264" fill="rgba(79,70,229,0.13)" stroke="#818cf8" stroke-width="1.4"/>
+            <polygon points="132,352 114,192 204,236" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.5"/>
+            <polygon points="114,192 250,85 204,236" fill="rgba(255,155,215,0.14)" stroke="#ff9bd7" stroke-width="1.4"/>
+            <line x1="204" y1="236" x2="296" y2="264" stroke="#ffffff" stroke-width="2" opacity="0.85" filter="url(#nexusSparkGlow)"/>
+            <line x1="250" y1="85" x2="278" y2="412" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+            <line x1="114" y1="192" x2="392" y2="288" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+          </g>
+          <g class="core-gyro-group">
+            <ellipse cx="250" cy="250" rx="98" ry="44" transform="rotate(-34 250 250)" fill="none" stroke="#7df9ff" stroke-width="1.8" opacity="0.85" class="gyro-ring-a"/>
+            <ellipse cx="250" cy="250" rx="86" ry="38" transform="rotate(48 250 250)" fill="none" stroke="#ff2d8d" stroke-width="1.8" opacity="0.85" class="gyro-ring-b"/>
+            <circle cx="250" cy="250" r="70" fill="rgba(139,92,246,0.08)" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="14 7" opacity="0.75"/>
+          </g>
+          <g class="core-singularity-group">
+            <circle cx="250" cy="250" r="54" fill="url(#nexusAuraCenter)" class="singularity-corona" filter="url(#nexusHighGlow)"/>
+            <circle cx="250" cy="250" r="28" fill="#4f46e5" opacity="0.8" filter="url(#nexusGlow)"/>
+            <polygon points="250,218 255,245 282,250 255,255 250,282 245,255 218,250 245,245" fill="#ffffff" filter="url(#nexusSparkGlow)" class="singularity-spark"/>
+            <circle cx="250" cy="250" r="9" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+          </g>
+          <g class="core-sparks-group">
+            <circle cx="180" cy="138" r="3.4" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            <circle cx="335" cy="132" r="3" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+            <circle cx="382" cy="215" r="3.2" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+            <circle cx="352" cy="354" r="3.5" fill="#ff007f" filter="url(#nexusSparkGlow)"/>
+            <circle cx="212" cy="384" r="2.8" fill="#3b82f6" filter="url(#nexusSparkGlow)"/>
+            <circle cx="128" cy="272" r="3.2" fill="#c084fc" filter="url(#nexusSparkGlow)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="boot-status-panel">
+      <p class="boot-kicker">INICIALIZAÇÃO DO NÚCLEO COGNITIVO</p>
+      <h2 class="boot-phase-title" id="boot-phase-title">IGNIÇÃO DA SINGULARIDADE</h2>
+      <p class="boot-phase-desc" id="boot-phase-desc">Despertando núcleo central e calibrando fluxo espectral local…</p>
+      <div class="boot-progress-track">
+        <div class="boot-progress-bar" id="boot-progress-bar"></div>
+      </div>
+      <div class="boot-controls-bar">
+      <span class="boot-timer" id="boot-timer">00:05</span>
+        <button id="boot-skip-button" class="boot-skip-btn" type="button" aria-label="Avançar diretamente para a apresentação">
+          Avançar <span>⏭</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="voice-global-controls"><span id="speech-global-status" class="sr-only" role="status" aria-live="polite"></span><button id="speech-stop-button" class="voice-pill voice-stop" type="button" hidden>Interromper fala <span aria-hidden="true">■</span></button></div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="N.E.X.U.S. início">
+      <img src="/assets/nexus.svg" alt="" width="38" height="38">
+      <span><b id="brand-identity-name">N.E.X.U.S.</b><small id="brand-identity-subtitle">NEURAL ENTITY · LOCAL CORE</small></span>
+    </a>
+    <div class="context-badge" id="active-context"><span class="status-dot" id="health-dot"></span><span id="context-label">Contexto não selecionado</span></div>
+    <div class="context-switcher" id="context-switcher" hidden><label class="sr-only" for="context-universe-select">Universo ativo</label><select id="context-universe-select" aria-label="Universo ativo"></select><button id="context-switch-button" class="secondary-button" type="button" disabled>Trocar</button></div>
+    <button class="icon-button" id="update-button" type="button" hidden aria-label="Recarregar para aplicar atualização">↻</button>
+    <button class="icon-button" id="install-button" type="button" hidden aria-label="Instalar aplicativo">↓</button>
+    <button class="icon-button" id="logout-button" type="button" hidden aria-label="Encerrar sessão">↗</button>
+    <details class="account-menu"><summary aria-label="Opções de conta">Conta</summary><div class="account-menu-panel"><button id="account-open" type="button">Entrar / criar conta</button><button id="theme-cycle" type="button">Tema: automático</button></div></details>
+  </header>
+
+  <main>
+    <section id="setup-view" class="setup-view">
+      <section class="welcome-screen" aria-labelledby="welcome-title">
+        <p class="eyebrow">NÚCLEO LOCAL · SEUS DADOS SOB SEU CONTROLE</p>
+        <div class="welcome-core core-visual" id="welcome-core" data-state="idle" aria-label="Núcleo visual do N.E.X.U.S.">
+          <svg viewBox="0 0 500 500" class="nexus-core-svg" role="img" aria-label="Núcleo cognitivo assimétrico multidimensional N.E.X.U.S.">
+            <g class="core-aura-layer">
+              <ellipse cx="200" cy="210" rx="170" ry="150" fill="url(#nexusAuraCyan)" filter="url(#nexusHighGlow)"/>
+              <ellipse cx="300" cy="290" rx="160" ry="145" fill="url(#nexusAuraMagenta)" filter="url(#nexusHighGlow)"/>
+              <circle cx="250" cy="250" r="110" fill="url(#nexusAuraCenter)" opacity="0.6" filter="url(#nexusGlow)"/>
+            </g>
+            <g class="core-flux-layer">
+              <path class="flux-arc-alpha" d="M 120,110 A 190,170 -15 0,0 155,405 L 172,390 A 165,150 -15 0,1 138,125 Z" fill="url(#nexusCyanBlue)" opacity="0.65" filter="url(#nexusGlow)"/>
+              <path class="flux-arc-beta" d="M 380,390 A 185,165 20 0,0 350,95 L 334,112 A 160,145 20 0,1 362,372 Z" fill="url(#nexusMagentaPink)" opacity="0.62" filter="url(#nexusGlow)"/>
+              <circle cx="250" cy="250" r="226" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="1.3" stroke-dasharray="16 12 36 8 8 16 64 14" opacity="0.5" class="telemetry-ring"/>
+              <line x1="120" y1="110" x2="105" y2="95" stroke="#7df9ff" stroke-width="2" opacity="0.8"/>
+              <line x1="380" y1="390" x2="396" y2="406" stroke="#ff70c5" stroke-width="2" opacity="0.8"/>
+              <circle cx="105" cy="95" r="3" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+              <circle cx="396" cy="406" r="3.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            </g>
+            <g class="core-orbit-alpha-group">
+              <ellipse cx="250" cy="250" rx="205" ry="92" fill="none" stroke="url(#nexusCyanBlue)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+              <circle cx="455" cy="250" r="5" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+              <circle cx="45" cy="250" r="3.5" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+            </g>
+            <g class="core-orbit-beta-group">
+              <ellipse cx="250" cy="250" rx="185" ry="82" fill="none" stroke="url(#nexusMagentaPink)" stroke-width="2" opacity="0.75" filter="url(#nexusGlow)"/>
+              <circle cx="250" cy="332" r="4.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+              <circle cx="250" cy="168" r="3" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+            </g>
+            <g class="core-crystal-group">
+              <polygon points="250,85 365,158 392,288 278,412 132,352 114,192" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+              <polygon points="250,85 365,158 296,264 204,236" fill="rgba(0,242,254,0.13)" stroke="#00f2fe" stroke-width="1.4"/>
+              <polygon points="365,158 392,288 296,264" fill="rgba(168,85,247,0.16)" stroke="#c084fc" stroke-width="1.5"/>
+              <polygon points="392,288 278,412 296,264" fill="rgba(255,0,127,0.18)" stroke="#ff007f" stroke-width="1.6"/>
+              <polygon points="278,412 132,352 204,236 296,264" fill="rgba(79,70,229,0.13)" stroke="#818cf8" stroke-width="1.4"/>
+              <polygon points="132,352 114,192 204,236" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.5"/>
+              <polygon points="114,192 250,85 204,236" fill="rgba(255,155,215,0.14)" stroke="#ff9bd7" stroke-width="1.4"/>
+              <line x1="204" y1="236" x2="296" y2="264" stroke="#ffffff" stroke-width="2" opacity="0.85" filter="url(#nexusSparkGlow)"/>
+              <line x1="250" y1="85" x2="278" y2="412" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+              <line x1="114" y1="192" x2="392" y2="288" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+            </g>
+            <g class="core-gyro-group">
+              <ellipse cx="250" cy="250" rx="98" ry="44" transform="rotate(-34 250 250)" fill="none" stroke="#7df9ff" stroke-width="1.8" opacity="0.85" class="gyro-ring-a"/>
+              <ellipse cx="250" cy="250" rx="86" ry="38" transform="rotate(48 250 250)" fill="none" stroke="#ff2d8d" stroke-width="1.8" opacity="0.85" class="gyro-ring-b"/>
+              <circle cx="250" cy="250" r="70" fill="rgba(139,92,246,0.08)" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="14 7" opacity="0.75"/>
+            </g>
+            <g class="core-singularity-group">
+              <circle cx="250" cy="250" r="54" fill="url(#nexusAuraCenter)" class="singularity-corona" filter="url(#nexusHighGlow)"/>
+              <circle cx="250" cy="250" r="28" fill="#4f46e5" opacity="0.8" filter="url(#nexusGlow)"/>
+              <polygon points="250,218 255,245 282,250 255,255 250,282 245,255 218,250 245,245" fill="#ffffff" filter="url(#nexusSparkGlow)" class="singularity-spark"/>
+              <circle cx="250" cy="250" r="9" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+            </g>
+            <g class="core-sparks-group">
+              <circle cx="180" cy="138" r="3.4" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+              <circle cx="335" cy="132" r="3" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+              <circle cx="382" cy="215" r="3.2" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+              <circle cx="352" cy="354" r="3.5" fill="#ff007f" filter="url(#nexusSparkGlow)"/>
+              <circle cx="212" cy="384" r="2.8" fill="#3b82f6" filter="url(#nexusSparkGlow)"/>
+              <circle cx="128" cy="272" r="3.2" fill="#c084fc" filter="url(#nexusSparkGlow)"/>
+            </g>
+          </svg>
+        </div>
+        <p class="welcome-kicker">NEURAL ENTITY · EXPLORATION UNIVERSAL SYSTEM</p>
+        <h1 id="welcome-title">Uma nova presença<br><span>para explorar possibilidades.</span></h1>
+        <p class="welcome-copy" id="welcome-narration">Eu sou o N.E.X.U.S., uma entidade digital em execução local. Seus contextos permanecem sob seu controle; vamos continuar de onde você escolher.</p>
+        <div class="presentation-controls" aria-label="Controles da apresentação">
+          <button id="welcome-speak-button" class="voice-pill" type="button">Ouvir apresentação <span aria-hidden="true">◖))</span></button>
+          <span id="speech-status" role="status" aria-live="polite">Apresentação em texto disponível.</span>
+        </div>
+        <div class="welcome-actions">
+          <button id="control-center-open" class="primary-button" type="button">Continuar <span>↗</span></button>
+          <button id="core-mic-button" class="secondary-button" type="button" aria-pressed="false">Ativar reação ao microfone <span>◉</span></button>
+        </div>
+        <p id="mic-status" class="mic-status" role="status" aria-live="polite">O microfone só será solicitado quando você ativar a reação visual.</p>
+        <p class="welcome-footnote">A interação por microfone altera apenas a animação visual. Reconhecimento de fala e conversa por voz não estão conectados.</p>
+      </section>
+      <div id="control-center" class="control-center" hidden>
+        <div class="control-heading"><div><p class="eyebrow">CENTRAL DE CONTROLE</p><h2>Conectar um contexto</h2><p class="muted">Retome um acesso existente ou crie um contexto local. A conexão continua protegida pela autenticação do N.E.X.U.S.</p></div><button id="control-center-close" class="secondary-button" type="button">Voltar à recepção</button></div>
+      <div class="setup-copy">
+        <p class="eyebrow">SISTEMA LOCAL · ACESSO SUPERVISIONADO</p>
+        <h1>Uma presença.<br><span>Contextos independentes.</span></h1>
+        <p class="muted">A interface acessa o núcleo local. Cada usuário e universo mantém seus próprios registros. Nenhum contexto é criado sem uma ação explícita.</p>
+      </div>
+      <div class="setup-grid">
+        <form id="create-context-form" class="glass-panel form-panel">
+          <div class="panel-kicker">NOVO CONTEXTO</div><h2>Criar usuário e universo</h2>
+          <label id="admin-token-field">Chave administrativa local<input name="adminToken" type="password" autocomplete="off" minlength="43" required spellcheck="false" placeholder="Defina NEXUS_PREVIEW_ADMIN_TOKEN ao iniciar o servidor"></label>
+          <label>Nome do universo<input name="universeName" maxlength="100" required placeholder="Ex.: Arquipélago azul"></label>
+          <label>ID do universo<input name="universeId" maxlength="48" pattern="[a-z0-9][a-z0-9_-]{0,46}[a-z0-9]?" required placeholder="ex: arquipelago-azul"></label>
+          <label>Nome de exibição<input name="displayName" maxlength="100" required placeholder="Como identificar este perfil"></label>
+          <label>ID do usuário<input name="userId" maxlength="48" pattern="[a-z0-9][a-z0-9_-]{0,46}[a-z0-9]?" required placeholder="ex: exploradora-01"></label>
+          <button class="primary-button" type="submit">Criar contexto local <span>↗</span></button>
+          <p class="fine-print" id="admin-token-help">A chave administrativa não tem valor padrão e precisa ser configurada no ambiente do Termux. Ela será enviada somente ao servidor local nesta operação.</p><p class="fine-print">A credencial do contexto será exibida uma única vez. Ela não equivale a autenticação humana.</p>
+        </form>
+        <form id="login-form" class="glass-panel form-panel">
+          <div class="panel-kicker">RETOMAR CONTEXTO</div><h2>Selecionar usuário</h2>
+          <label>ID do usuário<input name="userId" maxlength="48" required autocomplete="username"></label>
+          <label>ID do universo<input name="universeId" maxlength="48" required autocomplete="off" spellcheck="false" placeholder="ID fornecido na criação do contexto"></label>
+          <label>Credencial de acesso<input name="accessToken" type="password" required autocomplete="current-password" spellcheck="false"></label>
+          <button class="secondary-button" type="submit">Validar e entrar <span>→</span></button>
+          <p class="fine-print">A credencial é validada pelo núcleo; o navegador recebe uma sessão HttpOnly de duração limitada. Isso não autentica civilmente a pessoa nem substitui biometria Android.</p>
+        </form>
+      </div>
+      <p class="notice-line" id="setup-notice" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="application-view" hidden>
+      <nav class="navigation" aria-label="Navegação principal">
+        <button class="nav-item active" data-view="home">Núcleo</button>
+        <button class="nav-item" data-view="minecraft">Minecraft</button>
+        <button class="nav-item" data-view="conversation">Assistente</button>
+        <button class="nav-item" data-view="memory">Memória</button>
+        <button class="nav-item" data-view="goals">Objetivos</button>
+        <button class="nav-item" data-view="workspace">Tarefas</button>
+        <button class="nav-item" data-view="projects">Projetos</button>
+        <button class="nav-item" data-view="tools">Ferramentas</button>
+        <button class="nav-item" data-view="security">N.E.X.U.S. PETAL</button>
+        <button class="nav-item" data-view="modules">Módulos</button>
+        <button class="nav-item" data-view="settings">Configuração</button>
+      </nav>
+
+      <div class="app-grid" id="app-grid">
+        <section class="view-section" id="view-minecraft" data-panel="minecraft">
+          <div class="section-heading"><p class="eyebrow">MUNDO PRIVADO · CONEXÃO AUTORIZADA</p><h1>Central de <span>Minecraft.</span></h1><p class="muted">Teste a rede, salve seus servidores e acompanhe eventos. Status online não concede acesso de jogo nem executa construções.</p></div>
+          <form id="minecraft-connection-form" class="glass-panel compact-form"><h2>Conexão do servidor</h2><label>Nome para identificar<input name="name" maxlength="80" placeholder="Meu mundo privado"></label><label>Edição<select name="edition"><option value="java">Java Edition</option><option value="bedrock">Bedrock Edition</option></select></label><label>Endereço IP ou domínio<input name="host" maxlength="253" required placeholder="exemplo.net ou 192.168.1.20"></label><label>Porta<input name="port" type="number" min="1" max="65535" placeholder="Padrão da edição"></label><div class="inline-actions"><button class="secondary-button" id="minecraft-test" type="button">Testar conexão</button><button class="primary-button" type="submit">Salvar conexão</button></div><p class="fine-print">Java consulta status via TCP; Bedrock consulta RakNet via UDP. Firewalls/NAT precisam permitir a porta correta.</p></form>
+          <div class="minecraft-layout"><article class="glass-panel"><div class="panel-kicker">SERVIDORES SALVOS</div><div id="minecraft-connections" class="record-list"><p class="empty-state">Carregando conexões locais…</p></div><p id="minecraft-result" class="notice-line" role="status"></p></article><article class="glass-panel"><div class="panel-kicker">ASSISTENTE DE HOSPEDAGEM</div><h2>Escolha onde o mundo ficará</h2><p><b>Mesmo aparelho/LAN:</b> sem custo de hospedagem, mas o servidor Java/Bedrock precisa estar instalado e o aparelho ligado; conexões externas exigem configuração de roteador.</p><p><b>Servidor próprio:</b> controle maior, exige PC/VPS ativo, memória, manutenção e firewall.</p><p><b>Hospedagem gerenciada:</b> mais simples e com disponibilidade; pode ter custo mensal, limites e painel externo. Confirme o suporte à edição e versão antes de contratar.</p><p class="fine-print">Para um mundo privado, ative whitelist (Java) ou allow-list (Bedrock), use conta proprietária e adicione somente amigos autorizados. Configure RCON com senha forte e restrinja-o à rede confiável se for habilitar automação.</p><button id="minecraft-setup-checklist" type="button" class="secondary-button">Mostrar checklist de servidor</button><div id="minecraft-checklist" hidden><ol><li>Instale uma versão oficial Java ou Bedrock Dedicated Server compatível.</li><li>Aceite o EULA da edição Java quando aplicável e mantenha backups do mundo.</li><li>Habilite whitelist/allow-list e adicione proprietário e amigos pelo console do servidor.</li><li>Abra apenas TCP Java ou UDP Bedrock no firewall necessário ao jogo.</li><li>Para automação, instale plugin/API de comandos autorizado; status de rede sozinho não permite construir.</li></ol></div></article></div>
+          <form id="minecraft-access-form" class="glass-panel compact-form"><h2>Acesso e recuperação</h2><label>Jogadores permitidos (gamertags/nicks, um por linha)<textarea name="players" maxlength="1800" rows="3" placeholder="Proprietario\nAmigoPermitido"></textarea></label><label class="check-row"><input name="reconnect" type="checkbox"> Tentar reconectar manualmente após falha (não mantém processo em segundo plano)</label><button class="secondary-button" type="submit">Salvar lista e preferência</button><p id="minecraft-access-status" class="fine-print">A lista é uma referência local. A whitelist/allow-list efetiva precisa ser aplicada no painel/console do servidor.</p></form>
+          <article class="glass-panel"><div class="panel-kicker">CONSTRUÇÃO DO DOMÍNIO N.E.X.U.S.</div><p>O aplicativo ainda não recebeu um canal de comando (RCON/plugin/API) para inspecionar chunks, permissões ou alterar o mundo. Nenhuma construção foi executada. Para ativá-la é necessário instalar e autorizar uma ponte de comandos compatível com a edição, restringir a credencial e fornecer backups do mundo.</p><p class="fine-print">Plano em lotes e execução automática ficam indisponíveis até configurar essa ponte; a consulta de status não é usada como prova de acesso ao mundo.</p></article>
+        </section>
+        <section class="view-section active" id="view-home" data-panel="core">
+          <div class="hero-layout">
+            <div class="core-stage glass-panel">
+              <p class="eyebrow">NÚCLEO COGNITIVO · <span id="core-state">AGUARDANDO CONTEXTO</span></p>
+              <div class="core-visual" id="core-visual" data-state="idle" aria-label="Núcleo N.E.X.U.S., estado aguardando">
+                <svg viewBox="0 0 500 500" class="nexus-core-svg" role="img" aria-label="Núcleo cognitivo assimétrico multidimensional N.E.X.U.S.">
+                  <g class="core-aura-layer">
+                    <ellipse cx="200" cy="210" rx="170" ry="150" fill="url(#nexusAuraCyan)" filter="url(#nexusHighGlow)"/>
+                    <ellipse cx="300" cy="290" rx="160" ry="145" fill="url(#nexusAuraMagenta)" filter="url(#nexusHighGlow)"/>
+                    <circle cx="250" cy="250" r="110" fill="url(#nexusAuraCenter)" opacity="0.6" filter="url(#nexusGlow)"/>
+                  </g>
+                  <g class="core-flux-layer">
+                    <path class="flux-arc-alpha" d="M 120,110 A 190,170 -15 0,0 155,405 L 172,390 A 165,150 -15 0,1 138,125 Z" fill="url(#nexusCyanBlue)" opacity="0.65" filter="url(#nexusGlow)"/>
+                    <path class="flux-arc-beta" d="M 380,390 A 185,165 20 0,0 350,95 L 334,112 A 160,145 20 0,1 362,372 Z" fill="url(#nexusMagentaPink)" opacity="0.62" filter="url(#nexusGlow)"/>
+                    <circle cx="250" cy="250" r="226" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="1.3" stroke-dasharray="16 12 36 8 8 16 64 14" opacity="0.5" class="telemetry-ring"/>
+                    <line x1="120" y1="110" x2="105" y2="95" stroke="#7df9ff" stroke-width="2" opacity="0.8"/>
+                    <line x1="380" y1="390" x2="396" y2="406" stroke="#ff70c5" stroke-width="2" opacity="0.8"/>
+                    <circle cx="105" cy="95" r="3" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="396" cy="406" r="3.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                  </g>
+                  <g class="core-orbit-alpha-group">
+                    <ellipse cx="250" cy="250" rx="205" ry="92" fill="none" stroke="url(#nexusCyanBlue)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+                    <circle cx="455" cy="250" r="5" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="45" cy="250" r="3.5" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+                  </g>
+                  <g class="core-orbit-beta-group">
+                    <ellipse cx="250" cy="250" rx="185" ry="82" fill="none" stroke="url(#nexusMagentaPink)" stroke-width="2" opacity="0.75" filter="url(#nexusGlow)"/>
+                    <circle cx="250" cy="332" r="4.2" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="250" cy="168" r="3" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+                  </g>
+                  <g class="core-crystal-group">
+                    <polygon points="250,85 365,158 392,288 278,412 132,352 114,192" fill="none" stroke="url(#nexusMultiGrad)" stroke-width="2.2" opacity="0.8" filter="url(#nexusGlow)"/>
+                    <polygon points="250,85 365,158 296,264 204,236" fill="rgba(0,242,254,0.13)" stroke="#00f2fe" stroke-width="1.4"/>
+                    <polygon points="365,158 392,288 296,264" fill="rgba(168,85,247,0.16)" stroke="#c084fc" stroke-width="1.5"/>
+                    <polygon points="392,288 278,412 296,264" fill="rgba(255,0,127,0.18)" stroke="#ff007f" stroke-width="1.6"/>
+                    <polygon points="278,412 132,352 204,236 296,264" fill="rgba(79,70,229,0.13)" stroke="#818cf8" stroke-width="1.4"/>
+                    <polygon points="132,352 114,192 204,236" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.5"/>
+                    <polygon points="114,192 250,85 204,236" fill="rgba(255,155,215,0.14)" stroke="#ff9bd7" stroke-width="1.4"/>
+                    <line x1="204" y1="236" x2="296" y2="264" stroke="#ffffff" stroke-width="2" opacity="0.85" filter="url(#nexusSparkGlow)"/>
+                    <line x1="250" y1="85" x2="278" y2="412" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+                    <line x1="114" y1="192" x2="392" y2="288" stroke="url(#nexusMultiGrad)" stroke-width="1.2" opacity="0.55"/>
+                  </g>
+                  <g class="core-gyro-group">
+                    <ellipse cx="250" cy="250" rx="98" ry="44" transform="rotate(-34 250 250)" fill="none" stroke="#7df9ff" stroke-width="1.8" opacity="0.85" class="gyro-ring-a"/>
+                    <ellipse cx="250" cy="250" rx="86" ry="38" transform="rotate(48 250 250)" fill="none" stroke="#ff2d8d" stroke-width="1.8" opacity="0.85" class="gyro-ring-b"/>
+                    <circle cx="250" cy="250" r="70" fill="rgba(139,92,246,0.08)" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="14 7" opacity="0.75"/>
+                  </g>
+                  <g class="core-singularity-group">
+                    <circle cx="250" cy="250" r="54" fill="url(#nexusAuraCenter)" class="singularity-corona" filter="url(#nexusHighGlow)"/>
+                    <circle cx="250" cy="250" r="28" fill="#4f46e5" opacity="0.8" filter="url(#nexusGlow)"/>
+                    <polygon points="250,218 255,245 282,250 255,255 250,282 245,255 218,250 245,245" fill="#ffffff" filter="url(#nexusSparkGlow)" class="singularity-spark"/>
+                    <circle cx="250" cy="250" r="9" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                  </g>
+                  <g class="core-sparks-group">
+                    <circle cx="180" cy="138" r="3.4" fill="#ffffff" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="335" cy="132" r="3" fill="#00f2fe" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="382" cy="215" r="3.2" fill="#ff70c5" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="352" cy="354" r="3.5" fill="#ff007f" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="212" cy="384" r="2.8" fill="#3b82f6" filter="url(#nexusSparkGlow)"/>
+                    <circle cx="128" cy="272" r="3.2" fill="#c084fc" filter="url(#nexusSparkGlow)"/>
+                  </g>
+                </svg>
+              </div>
+              <h1 id="identity-heading">Presença <span>conectada.</span></h1>
+              <p class="muted" id="core-subtitle">O estado visual acompanha a disponibilidade real do núcleo local.</p>
+              <div class="identity-readout"><span id="identity-full-name"></span><p id="identity-purpose" class="muted"></p></div>
+              <div class="core-readout"><span><i class="status-dot online"></i> NÚCLEO LOCAL</span><span id="provider-state">GERAÇÃO EXTERNA DESATIVADA NESTA PRÉVIA</span></div>
+            </div>
+            <aside class="side-rail">
+              <article class="glass-panel metric-panel"><span class="panel-kicker">MEMÓRIA DO CONTEXTO</span><strong id="memory-count">—</strong><small>registros acessíveis</small></article>
+              <article class="glass-panel metric-panel"><span class="panel-kicker">OBJETIVOS ATIVOS</span><strong id="goal-count">—</strong><small>no universo selecionado</small></article>
+              <article class="glass-panel metric-panel"><span class="panel-kicker">TAREFAS PENDENTES</span><strong id="task-count">—</strong><small>progresso real registrado</small></article>
+              <article class="glass-panel activity-panel"><div class="panel-kicker">SINAL DE ATIVIDADE</div><p id="activity-label">Sem atividade recente.</p><small id="activity-time">—</small></article>
+            </aside>
+          </div>
+          <div class="quick-strip"><button class="quick-action" data-open-view="conversation"><b>Iniciar análise local</b><span>Processamento sem provedor externo ↗</span></button><button class="quick-action" data-open-view="workspace"><b>Abrir espaço de trabalho</b><span>Objetivos e tarefas deste contexto ↗</span></button></div>
+        </section>
+
+        <section class="view-section" id="view-conversation" data-panel="chat">
+          <div class="section-heading"><p class="eyebrow">ASSISTENTE CENTRAL · ANÁLISE LOCAL</p><h1>Assistente e <span>raciocínio.</span></h1><p class="muted">A análise local funciona por padrão. OpenAI ou Gemini só recebem uma mensagem quando a opção online estiver marcada.</p></div>
+          <p id="assistant-state" class="assistant-state" role="status" aria-live="polite">Disponível quando um contexto estiver conectado.</p><p id="voice-inline-status" class="voice-inline-status" role="status" aria-live="polite">As mensagens podem ser lidas pela síntese disponível no navegador.</p><div class="conversation-history-heading"><div><div class="panel-kicker">HISTÓRICO DO CONTEXTO</div><p class="muted">Mensagens anteriores são registros; sua origem factual não é presumida.</p></div><span id="conversation-count" class="conversation-count">0 registros</span></div><div id="conversation-list" class="conversation-list" aria-live="polite"></div>
+          <form id="chat-form" class="composer glass-panel"><label class="sr-only" for="chat-message">Mensagem para o N.E.X.U.S.</label><textarea id="chat-message" maxlength="4000" rows="3" required placeholder="Descreva uma situação para análise…"></textarea><div class="ai-opt-in"><label class="check-row"><input id="chat-generative-toggle" type="checkbox" disabled> Usar IA online nesta mensagem</label><p id="chat-generative-note" class="fine-print">A análise local funciona sem chave. Configure um provedor em Preferências.</p></div><div class="composer-footer"><span id="chat-processing-mode">Até 4.000 caracteres · processamento local</span><button class="primary-button" type="submit">Analisar <span>↑</span></button></div></form>
+          <div class="glass-panel reasoning-panel" id="last-reasoning"><div class="panel-kicker">ÚLTIMA AVALIAÇÃO</div><p class="muted">Ainda não há uma análise nesta sessão.</p></div>
+        </section>
+
+        <section class="view-section" id="view-memory" data-panel="memory">
+          <div class="section-heading"><p class="eyebrow">CONTEXTO ATIVO</p><h1>Memória e <span>histórico.</span></h1><p class="muted">Exibindo somente dados do usuário e universo selecionados.</p></div>
+          <form id="memory-form" class="inline-form glass-panel"><label class="sr-only" for="memory-text">Registrar uma lembrança</label><input id="memory-text" maxlength="3000" required placeholder="Registrar uma experiência neste contexto…"><button class="secondary-button" type="submit">Registrar</button></form>
+          <div class="two-column"><div><div class="panel-kicker">EXPERIÊNCIAS</div><div id="memory-list" class="record-list"></div></div><div><div class="panel-kicker">CONVERSAS RECENTES</div><div id="history-list" class="record-list"></div></div></div>
+          <section class="glass-panel knowledge-review" aria-labelledby="knowledge-review-title"><div class="review-heading"><div><div class="panel-kicker">QUALIDADE DA MEMÓRIA</div><h2 id="knowledge-review-title">Revisar conhecimento</h2><p class="muted">A revisão aponta registros possivelmente antigos ou diferentes entre si. Ela não altera nem exclui dados.</p></div><div class="review-controls"><label for="memory-review-age">Considerar antigo após</label><select id="memory-review-age"><option value="90">90 dias</option><option value="180">180 dias</option><option value="365" selected>1 ano</option><option value="730">2 anos</option></select><button class="secondary-button" id="memory-review-button" type="button">Revisar agora</button></div></div><div id="memory-review-results" class="review-results" role="status" aria-live="polite"><p class="empty-state">Carregando revisão…</p></div></section>
+          <div class="glass-panel export-panel"><div><div class="panel-kicker">PORTABILIDADE</div><h2>Backup criptografado</h2><p class="muted">Exporta apenas o contexto ativo. Uma senha é usada localmente no navegador com AES-GCM e PBKDF2; ela não é enviada ao servidor.</p></div><button class="secondary-button" id="export-button" type="button">Exportar backup</button></div>
+        </section>
+
+        <section class="view-section" id="view-goals" data-panel="goals">
+          <div class="section-heading"><p class="eyebrow">PLANEJAMENTO SUPERVISIONADO</p><h1>Objetivos e <span>tarefas.</span></h1><p class="muted">Alterações ficam limitadas ao contexto autenticado e são auditadas.</p></div>
+          <form id="goal-form" class="glass-panel compact-form"><h2>Novo objetivo</h2><label>Título<input name="title" maxlength="160" required></label><label>Descrição<textarea name="description" maxlength="2000" rows="2" required></textarea></label><label>Motivo (opcional)<input name="reason" maxlength="1000"></label><button class="primary-button" type="submit">Criar objetivo</button></form>
+          <div id="goal-list" class="goal-list"></div>
+        </section>
+
+        <section class="view-section" id="view-workspace" data-panel="workspace">
+          <div class="section-heading"><p class="eyebrow">ÁREA LIVRE · DADOS DO CONTEXTO</p><h1>Espaço de <span>trabalho.</span></h1><p class="muted">Arraste cartões para organizar a visualização. Isso altera apenas o layout, não os registros.</p></div>
+          <div class="workspace-toolbar glass-panel"><button id="zoom-out" data-layout-control type="button" aria-label="Diminuir zoom" disabled>−</button><span id="zoom-label">100%</span><button id="zoom-in" data-layout-control type="button" aria-label="Aumentar zoom" disabled>+</button><button data-pan="up" data-layout-control type="button" aria-label="Mover área para cima" disabled>↑</button><button data-pan="left" data-layout-control type="button" aria-label="Mover área para a esquerda" disabled>←</button><button data-pan="down" data-layout-control type="button" aria-label="Mover área para baixo" disabled>↓</button><button data-pan="right" data-layout-control type="button" aria-label="Mover área para a direita" disabled>→</button><button id="workspace-reset" data-layout-control type="button" disabled>Recentrar</button><button id="task-add-toggle" type="button">Adicionar tarefa</button></div>
+          <form id="task-form" class="glass-panel compact-form" hidden><h2>Nova tarefa</h2><label>Objetivo<select name="goalId" required></select></label><label>Título<input name="title" maxlength="160" required></label><label>Descrição<input name="description" maxlength="2000" required></label><button class="primary-button" type="submit">Criar tarefa</button></form>
+          <div class="workspace-viewport" id="workspace-viewport"><div id="workspace-canvas" class="workspace-canvas"></div></div>
+        </section>
+
+
+        <section class="view-section" id="view-projects" data-panel="projects">
+          <div class="section-heading"><p class="eyebrow">WORKSPACE PERSISTENTE · CONTEXTO ATIVO</p><h1>Projetos e <span>criação.</span></h1><p class="muted">Projetos ficam isolados por usuário e universo. Alterações são versionadas e auditadas; propostas continuam separadas dos projetos salvos.</p></div>
+          <form id="project-create-form" class="glass-panel compact-form"><h2>Novo projeto</h2><label>Nome<input name="name" maxlength="120" required></label><label>Descrição inicial<textarea name="description" maxlength="6000" rows="3"></textarea></label><label>Tipo<select name="kind"><option value="general">Geral</option><option value="tool">Ferramenta</option><option value="game">Jogo</option><option value="experiment">Experimento</option></select></label><button class="primary-button" type="submit">Criar e salvar projeto</button></form>
+          <div class="project-toolbar"><span id="project-count" class="muted">Carregando projetos…</span><div role="group" aria-label="Filtrar projetos"><button class="project-filter active" type="button" data-project-filter="active">Ativos</button><button class="project-filter" type="button" data-project-filter="archived">Arquivados</button><button class="project-filter" type="button" data-project-filter="all">Todos</button></div></div>
+          <div id="project-list" class="project-list" aria-live="polite"></div>
+          <section id="project-detail" class="glass-panel project-detail" hidden aria-live="polite"><div class="project-detail-head"><div><div class="panel-kicker">WORKSPACE DO PROJETO</div><h2 id="project-detail-name"></h2></div><button id="project-close" class="secondary-button" type="button">Fechar</button></div><p id="project-detail-meta" class="muted"></p><p id="project-detail-description"></p><div id="project-edit-area" hidden><form id="project-edit-form" class="compact-form"><label>Nome<input name="name" maxlength="120" required></label><label>Descrição<textarea name="description" maxlength="6000" rows="4"></textarea></label><label>Tipo<select name="kind"><option value="general">Geral</option><option value="tool">Ferramenta</option><option value="game">Jogo</option><option value="experiment">Experimento</option></select></label><button class="primary-button" type="submit">Salvar alterações</button></form></div><div class="panel-kicker">HISTÓRICO DE ALTERAÇÕES</div><div id="project-history" class="record-list"></div></section>
+          <details class="proposal-drawer"><summary>Preparar proposta sem salvar nem executar</summary><form id="project-form" class="glass-panel compact-form"><h2>Nova proposta</h2><label>Nome<input name="name" maxlength="100" required></label><label>Descrição<textarea name="description" maxlength="2000" rows="3" required></textarea></label><label>Tipo<select name="kind"><option value="tool">Ferramenta</option><option value="game">Jogo</option><option value="experiment">Experimento</option></select></label><button class="secondary-button" type="submit">Preparar proposta</button></form><div id="project-proposal-result" class="record-list" aria-live="polite"></div></details>
+        </section>
+
+        <section class="view-section" id="view-tools" data-panel="tools">
+          <div class="section-heading"><p class="eyebrow">CAPACIDADES SUPERVISIONADAS</p><h1>Ferramentas e <span>módulos.</span></h1><p class="muted">A criação de ferramentas está limitada a propostas revisáveis. Execução de código gerado não está habilitada.</p></div>
+          <article class="glass-panel tool-status"><div class="panel-kicker">ESTADO ATUAL</div><strong>Propostas disponíveis · execução bloqueada</strong><p>Use a área Projetos para preparar um esboço. O N.E.X.U.S. não executa o conteúdo produzido.</p><button type="button" class="secondary-button" data-open-view="projects">Abrir propostas de projeto</button></article>
+        </section>
+
+        <section class="view-section" id="view-modules" data-panel="modules">
+          <div class="section-heading"><p class="eyebrow">REGISTRO CENTRAL</p><h1>Capacidades e <span>módulos.</span></h1><p class="muted">Estados abaixo vêm do registro do núcleo. Módulos futuros permanecem desativados ou indisponíveis até implementação e teste.</p></div>
+          <div id="capability-list" class="capability-list"></div>
+        </section>
+
+        <section class="view-section" id="view-security" data-panel="security">
+          <div class="section-heading"><p class="eyebrow">SUBSISTEMA OFICIAL</p><h1>N.E.X.U.S. <span>PETAL</span></h1><p class="muted">Segurança e proteção · status observável dos mecanismos reais.</p></div><div id="petal-summary" class="petal-summary"></div><div id="petal-module-list" class="petal-module-list"></div><article class="glass-panel petal-audit"><div class="panel-kicker">AUDITORIA LOCAL RECENTE</div><div id="audit-list" class="record-list"></div></article>
+        </section>
+
+        <section class="view-section" id="view-settings" data-panel="settings">
+          <div class="section-heading"><p class="eyebrow">PERSONALIZAÇÃO CONTROLADA</p><h1>Preferências do <span>contexto.</span></h1><p class="muted">O modo de edição permite configurar painéis; núcleo e navegação permanecem fixos.</p></div>
+          <div class="glass-panel settings-panel"><div class="settings-row"><div><b>Modo de edição</b><p class="muted">Ative para alterar visibilidade, ordem, movimento, tamanho, zoom e posição da área.</p></div><button id="layout-edit-toggle" class="secondary-button" type="button" aria-pressed="false">Editar layout</button></div><div id="layout-editor" hidden><div id="panel-toggles" class="toggle-list"></div><div class="settings-row"><label class="check-row"><input id="reduced-motion" type="checkbox"> Reduzir movimento</label><button id="layout-undo" type="button">Desfazer</button><button id="layout-reset" type="button">Restaurar padrão</button><button id="layout-save" class="primary-button" type="button">Confirmar e salvar</button></div></div></div>
+          <div class="glass-panel settings-panel voice-preferences"><div><div class="panel-kicker">VOZ DA INTERFACE</div><h2>Apresentação falada</h2><p class="muted">Usa a síntese de fala disponível no navegador. O texto continua visível e nenhuma fala é enviada.</p></div><label for="voice-mode">Preferência de apresentação<select id="voice-mode"><option value="voice">Texto e voz</option><option value="text">Somente texto</option></select></label></div>
+          <section class="glass-panel settings-panel ai-settings"><div><div class="panel-kicker">IA EXTERNA · OPCIONAL</div><h2>Conectar um provedor</h2><p class="muted">A chave fica somente na memória do processo local e é apagada ao fechar o N.E.X.U.S. Ao ativar IA numa mensagem, o texto e o contexto relevante são enviados ao provedor escolhido, que pode cobrar pelo uso. A chave nunca é mostrada de novo nem salva em arquivo.</p></div><form id="ai-configuration-form" class="compact-form"><label for="ai-provider">Provedor<select id="ai-provider" name="provider"><option value="openai">OpenAI</option><option value="gemini">Google Gemini</option></select></label><label for="ai-api-key">Chave de API<input id="ai-api-key" name="apiKey" type="password" minlength="20" maxlength="300" autocomplete="new-password" spellcheck="false" required placeholder="Cole a chave do provedor"></label><div class="inline-actions"><button class="primary-button" type="submit">Conectar nesta sessão</button><button id="ai-clear-button" class="secondary-button" type="button">Desconectar chave</button></div></form><p id="ai-configuration-status" class="fine-print" role="status" aria-live="polite">IA online não configurada.</p></section>
+          <div class="glass-panel settings-panel"><div class="panel-kicker">APLICATIVO ANDROID</div><p class="muted">O APK debug é compilado e publicado como artefato pelo workflow Android do GitHub Actions. Este aparelho não tem Android SDK; a PWA continua instalável pelo navegador.</p><button id="pwa-install" class="secondary-button" type="button" hidden>Instalar neste dispositivo</button></div>
+        </section>
+      </div>
+      <p class="notice-line" id="app-notice" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer><span>IDENTIDADE-BASE PRESERVADA</span><span>PROCESSAMENTO LOCAL · LOOPBACK</span></footer>
+</body>
+</html>

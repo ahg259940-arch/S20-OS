@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="multiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="28%" stop-color="#3b82f6"/>
+      <stop offset="56%" stop-color="#8b5cf6"/>
+      <stop offset="82%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#ff9bd7"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7df9ff"/>
+      <stop offset="100%" stop-color="#0077ff"/>
+    </linearGradient>
+    <linearGradient id="magentaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#ff70c5"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#7df9ff" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#a855f7" stop-opacity="0.6"/>
+      <stop offset="85%" stop-color="#ff007f" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fundo cósmico com curvatura -->
+  <rect width="128" height="128" rx="28" fill="#070914" stroke="rgba(168,85,247,0.28)" stroke-width="1.5"/>
+
+  <!-- Halo de energia multiespectral de fundo -->
+  <circle cx="48" cy="46" r="32" fill="#00f2fe" opacity="0.14" filter="url(#intenseGlow)"/>
+  <circle cx="82" cy="80" r="30" fill="#ff007f" opacity="0.16" filter="url(#intenseGlow)"/>
+
+  <!-- Anel orbital elíptico inclinado em 3D -->
+  <ellipse cx="64" cy="64" rx="52" ry="22" transform="rotate(-28 64 64)" fill="none" stroke="url(#multiGrad)" stroke-width="2" opacity="0.82" filter="url(#softGlow)"/>
+  <!-- Estrutura cristalina poligonal assimétrica do núcleo -->
+  <polygon points="64,18 97,38 106,76 74,108 30,96 22,50" fill="none" stroke="url(#multiGrad)" stroke-width="2.2" opacity="0.7" filter="url(#softGlow)"/>
+
+  <!-- Facetas refrativas internas com cores distribuídas -->
+  <!-- Faceta superior-esquerda em azul/ciano -->
+  <polygon points="64,18 52,60 22,50" fill="rgba(0,242,254,0.18)" stroke="url(#cyanGrad)" stroke-width="1.2"/>
+  <!-- Faceta inferior-direita em magenta/rosa -->
+  <polygon points="106,76 74,108 76,66" fill="rgba(255,0,127,0.2)" stroke="url(#magentaGrad)" stroke-width="1.2"/>
+  <!-- Faceta central em violeta -->
+  <polygon points="52,60 97,38 76,66" fill="rgba(139,92,246,0.22)" stroke="#a855f7" stroke-width="1"/>
+  <polygon points="52,60 74,108 30,96" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="1"/>
+
+  <!-- Giroscópio interno inclinado em contra-ângulo -->
+  <ellipse cx="64" cy="64" rx="24" ry="12" transform="rotate(48 64 64)" fill="none" stroke="#7df9ff" stroke-width="1.4" opacity="0.85"/>
+  <ellipse cx="64" cy="64" rx="18" ry="9" transform="rotate(-40 64 64)" fill="none" stroke="#ff70c5" stroke-width="1.2" opacity="0.8"/>
+
+  <!-- Singularidade central com núcleo de energia pura branca -->
+  <circle cx="64" cy="64" r="14" fill="url(#centerGlow)" filter="url(#softGlow)"/>
+  <circle cx="64" cy="64" r="4.5" fill="#ffffff" filter="url(#softGlow)"/>
+
+  <!-- Nódulos de energia quântica orbitantes -->
+  <circle cx="21" cy="42" r="2.2" fill="#00f2fe" filter="url(#softGlow)"/>
+  <circle cx="106" cy="76" r="2.5" fill="#ff007f" filter="url(#softGlow)"/>
+  <circle cx="97" cy="38" r="2" fill="#ffc2df" filter="url(#softGlow)"/>
+  <circle cx="74" cy="108" r="2" fill="#3b82f6" filter="url(#softGlow)"/>
+</svg>
