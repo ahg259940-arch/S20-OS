@@ -17,6 +17,32 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
+      - name: Localizar sdkmanager
+        shell: bash
+        run: |
+          sdkmanager_path=""
+          searched_paths=""
+          for sdk_root in "${ANDROID_HOME:-}" "${ANDROID_SDK_ROOT:-}"; do
+            if [ -z "$sdk_root" ]; then
+              continue
+            fi
+
+            cmdline_tools_path="$sdk_root/cmdline-tools"
+            searched_paths="${searched_paths}${searched_paths:+, }$cmdline_tools_path"
+            if [ -d "$cmdline_tools_path" ]; then
+              sdkmanager_path="$(find "$cmdline_tools_path" -type f -name sdkmanager -executable -print -quit)"
+              if [ -n "$sdkmanager_path" ]; then
+                break
+              fi
+            fi
+          done
+
+          if [ -z "$sdkmanager_path" ]; then
+            echo "Erro: sdkmanager não encontrado. Caminhos do SDK pesquisados: ${searched_paths:-ANDROID_HOME/cmdline-tools e ANDROID_SDK_ROOT/cmdline-tools (variáveis não definidas)}" >&2
+            exit 1
+          fi
+
+          echo "${sdkmanager_path%/*}" >> "$GITHUB_PATH"
       - name: Instalar Android SDK 35
         run: |
           yes | sdkmanager --licenses
